@@ -28,26 +28,87 @@
                 <p>Los mensajes que sean aprobados por los moderadores aparecerán aquí.</p>
             </div>
         @else
-            @foreach(array_reverse($approvedMessages) as $message)
+            @foreach($approvedMessages as $message)
                 <div class="message-card">
                     <div class="message-header">
-                        <span class="message-user">{{ $message['user'] }}</span>
-                        <span class="message-time">{{ $message['timestamp'] }}</span>
+                        <span class="message-user">{{ $message['user'] ?? 'Usuario' }}</span>
+                        <span class="message-time">{{ $message['timestamp'] ?? 'Sin fecha' }}</span>
                     </div>
-                    <div class="message-title">{{ $message['title'] }}</div>
-                    <div class="message-text">{{ $message['text'] }}</div>
+                    <div class="message-title">{{ $message['title'] ?? 'Sin título' }}</div>
+                    <div class="message-text">{{ $message['text'] ?? 'Sin contenido' }}</div>
                     <span class="message-status status-approved">Aprobado</span>
+                </div>
+            @endforeach
+        @endif
+    </div>
+    
+    <!-- Tab Pendientes -->
+    <div id="pendientes" class="tab-content">
+        <h2>Mensajes Pendientes de Moderación</h2>
+        @if(empty($pendingMessages))
+            <div class="empty-state">
+                <h3>No tienes mensajes pendientes</h3>
+                <p>Los mensajes que envíes estarán pendientes de moderación hasta que sean revisados.</p>
+            </div>
+        @else
+            @foreach($pendingMessages as $message)
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-user">{{ $message['user'] ?? 'Usuario' }}</span>
+                        <span class="message-time">{{ $message['timestamp'] ?? 'Sin fecha' }}</span>
+                    </div>
+                    <div class="message-title">{{ $message['title'] ?? 'Sin título' }}</div>
+                    <div class="message-text">{{ $message['text'] ?? 'Sin contenido' }}</div>
+                    <span class="message-status status-pending">Pendiente de moderación</span>
+                </div>
+            @endforeach
+        @endif
+    </div>
+    
+    <!-- Tab Eliminados -->
+    <div id="eliminados" class="tab-content">
+        <h2>Mensajes Eliminados</h2>
+        @if(empty($deletedMessages))
+            <div class="empty-state">
+                <h3>No tienes mensajes eliminados</h3>
+                <p>Los mensajes que sean eliminados por los moderadores aparecerán aquí con la razón.</p>
+            </div>
+        @else
+            @foreach($deletedMessages as $message)
+                <div class="message-card">
+                    <div class="message-header">
+                        <span class="message-user">{{ $message['user'] ?? 'Usuario' }}</span>
+                        <span class="message-time">{{ $message['timestamp'] ?? 'Sin fecha' }}</span>
+                    </div>
+                    <div class="message-title">{{ $message['title'] ?? 'Sin título' }}</div>
+                    <div class="message-text">{{ $message['text'] ?? 'Sin contenido' }}</div>
+                    <span class="message-status status-pending">Eliminado</span>
                     
-                    @if(isset($message['moderated_at']))
-                        <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #718096;">
-                            Moderado el: {{ $message['moderated_at'] }}
+                    @if(isset($message['delete_reason']))
+                        <div class="delete-info">
+                            <strong>Razón de eliminación:</strong>
+                            <span>{{ $message['delete_reason'] }}</span>
                         </div>
                     @endif
                 </div>
             @endforeach
         @endif
     </div>
-    
-    <!-- ... resto del código similar ... -->
 </div>
+
+<script>
+    function showTab(tabName) {
+        // Ocultar todos los tabs
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Mostrar el tab seleccionado
+        document.getElementById(tabName).classList.add('active');
+        event.target.classList.add('active');
+    }
+</script>
 @endsection

@@ -6,9 +6,12 @@
         "text": "&lt;script&gt;",
         "asignatura": "Inglés",
         "approved": "pending",
-        "status": "active",
+        "status": "deleted",
         "timestamp": "12:19 25\/11\/2025",
-        "dangerous_content": "attack"
+        "dangerous_content": "attack",
+        "delete_reason": "ervav",
+        "deleted_at": "08:42 14\/01\/2026",
+        "deleted_by": "profe"
     },
     {
         "id": "6925934630d66",
@@ -27,10 +30,12 @@
         "title": "aaa",
         "text": "aaa",
         "asignatura": "Inglés",
-        "approved": "pending",
+        "approved": "true",
         "status": "active",
         "timestamp": "12:30 25\/11\/2025",
-        "dangerous_content": "false"
+        "dangerous_content": "false",
+        "moderated_at": "08:42 14\/01\/2026",
+        "moderated_by": "profe"
     },
     {
         "id": "6925935c8f415",
@@ -52,9 +57,12 @@
         "text": "maricón",
         "asignatura": "Historia",
         "approved": "pending",
-        "status": "active",
+        "status": "deleted",
         "timestamp": "12:44 25\/11\/2025",
-        "dangerous_content": "words"
+        "dangerous_content": "words",
+        "delete_reason": "esto no colega",
+        "deleted_at": "08:42 14\/01\/2026",
+        "deleted_by": "profe"
     },
     {
         "id": "692596ce8cbc7",
@@ -78,6 +86,44 @@
         "approved": "true",
         "status": "active",
         "timestamp": "11:09 13\/01\/2026",
+        "dangerous_content": "false"
+    },
+    {
+        "id": "6967550d0b641",
+        "user": "Marcotes",
+        "title": "ola quetal",
+        "text": "vrvervaev",
+        "asignatura": "Lengua",
+        "approved": "true",
+        "status": "active",
+        "timestamp": "08:34 14\/01\/2026",
+        "dangerous_content": "false",
+        "moderated_at": "08:41 14\/01\/2026",
+        "moderated_by": "profe"
+    },
+    {
+        "id": "696757b473fd5",
+        "user": "Marcotes",
+        "title": "ola",
+        "text": "vrvrwvrav",
+        "asignatura": "Inglés",
+        "approved": "pending",
+        "status": "deleted",
+        "timestamp": "08:45 14\/01\/2026",
+        "dangerous_content": "false",
+        "delete_reason": "dcdc",
+        "deleted_at": "08:46 14\/01\/2026",
+        "deleted_by": "profe"
+    },
+    {
+        "id": "696757b9eb0a3",
+        "user": "Marcotes",
+        "title": "vevav",
+        "text": "veravearv",
+        "asignatura": "Historia",
+        "approved": "pending",
+        "status": "active",
+        "timestamp": "08:45 14\/01\/2026",
         "dangerous_content": "false"
     }
 ]

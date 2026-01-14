@@ -11,14 +11,14 @@
             Mensajes pendientes de revisión
         </p>
         
-        @if($pendingMessages->isEmpty())
+        @if(empty($pendingMessages))
             <div class="no-messages">
                 <h3>No hay mensajes pendientes de moderación</h3>
                 <p>Todos los mensajes han sido revisados.</p>
             </div>
         @else
             <div class="pending-count" style="text-align: center; margin-bottom: 1.5rem; font-weight: 600; color: #742a2a;">
-                {{ $pendingMessages->count() }} mensajes pendientes de revisión
+                {{ count($pendingMessages) }} mensajes pendientes de revisión
             </div>
             
             @foreach($pendingMessages as $message)
@@ -32,11 +32,11 @@
                     <div class="message-text">{{ $message['asignatura'] ?? 'Sin asignatura' }}</div>
                     <div class="message-text">{{ $message['text'] ?? 'Sin contenido' }}</div>
                     
-                    @if($message['dangerous_content'] == 'words')
+                    @if(($message['dangerous_content'] ?? '') == 'words')
                         <div class="warning-dangerous" style="background-color: red; border-radius: 6px; border: 1px solid black; padding: 0.5rem; color: white">
                             Palabra ofensiva detectada !!
                         </div>
-                    @elseif($message['dangerous_content'] == 'attack')
+                    @elseif(($message['dangerous_content'] ?? '') == 'attack')
                         <div class="warning-dangerous" style="background-color: red; border-radius: 6px; border: 1px solid black; padding: 0.5rem; color: white">
                             ⚠️ Contenido potencialmente peligroso detectado ⚠️
                         </div>
@@ -47,7 +47,7 @@
                     <div class="moderation-actions">
                         <form method="post" action="{{ route('moderation.approve') }}" style="display: inline;">
                             @csrf
-                            <input type="hidden" name="message_id" value="{{ $message['id'] }}">
+                            <input type="hidden" name="message_id" value="{{ $message['id'] ?? '' }}">
                             <button type="submit" class="btn-approve" 
                                     onclick="return confirm('¿Aprobar este mensaje?')">
                                 Aprobar Mensaje
@@ -57,7 +57,7 @@
                         <form method="post" action="{{ route('moderation.delete') }}" 
                               style="display: inline; margin-left: 10px;">
                             @csrf
-                            <input type="hidden" name="message_id" value="{{ $message['id'] }}">
+                            <input type="hidden" name="message_id" value="{{ $message['id'] ?? '' }}">
                             <input type="text" name="delete_reason" placeholder="Razón de eliminación..." 
                                    class="delete-reason" required>
                             <button type="submit" class="btn-delete" 

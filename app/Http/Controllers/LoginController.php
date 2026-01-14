@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
@@ -37,20 +36,32 @@ class LoginController extends Controller
                 ->withInput();
         }
         
-        // Crear sesión personalizada (ya que no usamos Eloquent)
+        // Guardar en sesión
         Session::put('user_id', $user['id']);
         Session::put('username', $user['username']);
         Session::put('email', $user['email']);
         Session::put('is_professor', $user['isProfessor']);
         Session::put('theme', $user['theme'] ?? 'light');
         
+        // Regenerar ID de sesión por seguridad
+        Session::regenerate();
+        
         return redirect()->route('home')
             ->with('success', 'Bienvenido ' . $user['username']);
     }
     
-    public function logout()
+    public function logout(Request $request)
     {
+        // Limpiar toda la sesión
         Session::flush();
-        return redirect()->route('home');
+        
+        // Invalidar la sesión
+        Session::invalidate();
+        
+        // Regenerar token CSRF
+        $request->session()->regenerateToken();
+        
+        return redirect()->route('home')
+            ->with('success', 'Sesión cerrada correctamente');
     }
 }

@@ -22,8 +22,10 @@
                 @endif
                 
                 <div class="profile-dropdown">
-                    <a href="#" class="profile-btn">Perfil</a>
-                    <div class="dropdown-content">
+                    <button type="button" class="profile-btn" onclick="toggleDropdown(event)">
+                        Perfil
+                    </button>
+                    <div class="dropdown-content" id="profileDropdown">
                         <div class="user-info">
                             <div><strong>{{ session('username') }}</strong></div>
                             <div>{{ session('email') }}</div>
@@ -78,5 +80,42 @@
     </div>
     
     @stack('scripts')
+    
+    <script>
+        // Función para mostrar/ocultar el dropdown
+        function toggleDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('show');
+        }
+        
+        // Cerrar el dropdown al hacer clic fuera
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('profileDropdown');
+            const profileBtn = document.querySelector('.profile-btn');
+            
+            // Si el clic NO fue en el dropdown NI en el botón del perfil
+            if (dropdown && profileBtn) {
+                const isClickInsideDropdown = dropdown.contains(event.target);
+                const isClickOnProfileBtn = profileBtn.contains(event.target) || event.target === profileBtn;
+                
+                if (!isClickInsideDropdown && !isClickOnProfileBtn) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+        
+        // Cerrar el dropdown con Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const dropdown = document.getElementById('profileDropdown');
+                if (dropdown) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        });
+    </script>
 </body>
 </html>

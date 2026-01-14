@@ -47,6 +47,58 @@ class MessageController extends Controller
         return redirect()->route('home')->with('success', $successMsg);
     }
     
+    // MÉTODO NUEVO PARA VER LOS MENSAJES DEL USUARIO
+    public function myMessages()
+    {
+        $username = Session::get('username');
+        
+        if (!$username) {
+            return redirect()->route('login')
+                ->with('error', 'Debes iniciar sesión para ver tus mensajes');
+        }
+        
+        // Obtener todos los mensajes del usuario
+        $userMessages = Message::getUserMessages($username);
+        
+        // Inicializar arrays
+        $approvedMessages = [];
+        $pendingMessages = [];
+        $deletedMessages = [];
+        
+        // Filtrar mensajes
+        foreach ($userMessages as $message) {
+            if (($message['status'] ?? 'active') === 'deleted') {
+                $deletedMessages[] = $message;
+            } elseif (($message['approved'] ?? '') === 'true') {
+                $approvedMessages[] = $message;
+            } elseif (($message['approved'] ?? '') === 'pending') {
+                $pendingMessages[] = $message;
+            }
+        }
+        
+        // Ordenar por timestamp descendente
+        usort($approvedMessages, function($a, $b) {
+            return strtotime(str_replace('/', '-', $b['timestamp'])) - 
+                   strtotime(str_replace('/', '-', $a['timestamp']));
+        });
+        
+        usort($pendingMessages, function($a, $b) {
+            return strtotime(str_replace('/', '-', $b['timestamp'])) - 
+                   strtotime(str_replace('/', '-', $a['timestamp']));
+        });
+        
+        usort($deletedMessages, function($a, $b) {
+            return strtotime(str_replace('/', '-', $b['timestamp'])) - 
+                   strtotime(str_replace('/', '-', $a['timestamp']));
+        });
+        
+        return view('messages.myMessages', [
+            'approvedMessages' => $approvedMessages,
+            'pendingMessages' => $pendingMessages,
+            'deletedMessages' => $deletedMessages
+        ]);
+    }
+    
     private function validateContent($text, $title)
     {
         $textLower = mb_strtolower(trim($text), 'UTF-8');

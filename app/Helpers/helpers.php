@@ -1,12 +1,12 @@
 <?php
 // app/Helpers/helpers.php
-
+//helpers funciona para gestionar la autenticación y la información del usuario en sesión
 use Illuminate\Support\Facades\Session;
 
 if (!function_exists('auth_check')) {
     function auth_check()
     {
-        return Session::has('username');
+        return Session::has('username') && !empty(Session::get('username'));
     }
 }
 

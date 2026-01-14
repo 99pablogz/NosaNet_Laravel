@@ -1,3 +1,18 @@
 [
-  
+    {
+        "id": "69674c77c1a2a",
+        "username": "Marcotes",
+        "email": "aaa@g.com",
+        "password": "$2y$12$dAcZFqv5KCVQ71ncdNlbfOA2JApRvtVPlnXbCnWU09WfF9NisX.Z.",
+        "isProfessor": "False",
+        "theme": "light"
+    },
+    {
+        "id": "69675539c98b0",
+        "username": "profe",
+        "email": "ola@vrva.com",
+        "password": "$2y$12$FmSJqFUCarSZGK438EY03uzfSXm1LJWzKa5AI80W4efHUphYAPLNu",
+        "isProfessor": "True",
+        "theme": "light"
+    }
 ]
