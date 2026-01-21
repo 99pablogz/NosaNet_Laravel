@@ -18,6 +18,24 @@ Route::middleware(['theme'])->group(function () {
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/messages/new', function () {
+        // Cargar mensajes aprobados
+        $messages = \App\Models\Message::getApproved();
+        
+        // Forzar que sea una colección si no lo es
+        if (!($messages instanceof Collection)) {
+            if (is_array($messages)) {
+                $messages = collect($messages);
+            } else {
+                $messages = collect([]);
+            }
+        }
+        
+        // Ordenar por timestamp descendente
+        $messages = $messages->sortByDesc('timestamp');
+        
+        return view('home', compact('messages'));
+    })->name('home');
     
     // Tema
     Route::post('/theme/toggle', [ThemeController::class, 'toggle'])->name('theme.toggle');
@@ -30,8 +48,8 @@ Route::middleware(['theme'])->group(function () {
 
     // Moderación
     Route::middleware(['auth.custom', 'professor'])->group(function () {
-        Route::get('/moderation', [ModerationController::class, 'index'])->name('moderation.index');
-        Route::post('/moderation/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
+
+    Route::post('/moderation/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
         Route::post('/moderation/delete', [ModerationController::class, 'delete'])->name('moderation.delete');
     });
     
