@@ -30,8 +30,8 @@ Route::middleware(['theme'])->group(function () {
 
     // Moderación
     Route::middleware(['auth.custom', 'professor'])->group(function () {
-        Route::get('/moderation', [ModerationController::class, 'index'])->name('moderation.index');
-        Route::post('/moderation/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
+
+    Route::post('/moderation/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
         Route::post('/moderation/delete', [ModerationController::class, 'delete'])->name('moderation.delete');
     });
     

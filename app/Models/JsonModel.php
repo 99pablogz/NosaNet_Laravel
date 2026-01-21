@@ -10,7 +10,6 @@ abstract class JsonModel
 {
     protected static $filePath;
     
-    //este método debe ser implementado en las clases hijas , sirve para obtener la ruta del archivo JSON
     protected static function getFilePath()
     {
         return database_path('json/' . static::$filePath);
