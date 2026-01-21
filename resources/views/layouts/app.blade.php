@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="{{ session('theme', 'light') }}">
+<html lang="es" class="{{ session('theme', 'light') }}">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,25 @@
     <link rel="preconnect" href="https://rsms.me/">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @stack('styles')
+
+    <script>
+        // Cargar tema de cookie si no está en HTML
+        document.addEventListener('DOMContentLoaded', function() {
+            const html = document.documentElement;
+            if (!html.hasAttribute('data-theme')) {
+                const themeCookie = document.cookie
+                    .split('; ')
+                    .find(row => row.startsWith('theme='));
+                
+                if (themeCookie) {
+                    const theme = themeCookie.split('=')[1];
+                    html.setAttribute('data-theme', theme);
+                } else {
+                    html.setAttribute('data-theme', 'light');
+                }
+            }
+        });
+    </script>
 </head>
 <body>
     <header>

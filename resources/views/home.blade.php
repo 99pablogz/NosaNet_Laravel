@@ -17,8 +17,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="text">Mensaje:</label>
-                    <textarea name="text" id="text" required maxlength="250" 
+                    <label for="textarea">Mensaje:</label>
+                    <textarea name="text" id="textarea" required maxlength="250" 
                               placeholder="Escribe tu mensaje aquí (máximo 250 caracteres)"></textarea>
                 </div>
                 

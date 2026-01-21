@@ -1,5 +1,4 @@
 :root {
-  /* Nueva paleta de colores - igual que forms.css */
   --elementos: #ffffff;
   --background-mid: #667eea;
   --background-light: #764ba2;
@@ -8,7 +7,6 @@
   --texto-light: #4a5568;
   --primario: #667eea;
   --primario-dark: #5a67d8;
-  /* Fuente */
   font-family: Inter, sans-serif;
   font-feature-settings: 'liga' 1, 'calt' 1;
 }
@@ -462,7 +460,6 @@ header a:hover {
   padding: 2rem;
 }
 
-/* Estilos para moderación - eliminar mensajes pendientes */
 .moderation-actions {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -503,7 +500,6 @@ header a:hover {
   box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
 }
 
-/* Mensajes de éxito y error */
 .alert {
   padding: 1rem;
   border-radius: 8px;
@@ -665,7 +661,6 @@ header a:hover {
   }
 }
 
-/* Banner de Cookies */
 .cookie-banner {
   position: fixed;
   bottom: 0;
@@ -741,7 +736,6 @@ header a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* ===== DARK MODE ===== */
 [data-theme="dark"] {
   --elementos: #1a202c;
   --background-mid: #2d3748;
@@ -841,7 +835,6 @@ header a:hover {
   color: #fed7d7;
 }
 
-/* Ajustes para los textos con gradiente en dark mode */
 [data-theme="dark"] h1,
 [data-theme="dark"] .post-form h2,
 [data-theme="dark"] .messages-list h2 {
@@ -866,7 +859,6 @@ header a:hover {
 #recientes {
   color: #764ba2;
 }
-/* ===== SELECTOR DE TEMA ===== */
 .theme-toggle-container {
     position: fixed;
     bottom: 20px;

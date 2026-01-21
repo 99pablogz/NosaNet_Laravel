@@ -14,5 +14,95 @@
         "password": "$2y$12$FmSJqFUCarSZGK438EY03uzfSXm1LJWzKa5AI80W4efHUphYAPLNu",
         "isProfessor": "True",
         "theme": "light"
+    },
+    {
+        "id": "6968cc607f77d",
+        "username": "Anitalahuerfanita",
+        "email": "webos@gmail.com",
+        "password": "$2y$12$ipaSIRG6bGrL3sRw3vEwTeOAPNMZ8PxQTSvSS2U4647tckFiALP2S",
+        "isProfessor": "True",
+        "theme": "dark",
+        "created_at": "2026-01-15 11:15:44"
+    },
+    {
+        "id": "6968cdc3e4c0d",
+        "username": "Godrigo",
+        "email": "godrigowaifus123@gmail.com",
+        "password": "$2y$12$44NKsKMHAv44XvWxhwByj.GDqm6kh\/k0eVLYBHz0V2wx5z4mgI47e",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-15 11:21:40"
+    },
+    {
+        "id": "696f67a3b4b3e",
+        "username": "dana.vinan",
+        "email": "vinanlopezdana@gmail.com",
+        "password": "$2y$12$G80QkwgYZrr6Nrczu9TLw.lMbfbvoSZqcH4gHKzf47O.5W.EXilM.",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-20 11:31:47"
+    },
+    {
+        "id": "696f687a44edc",
+        "username": "Niggamensua",
+        "email": "nmensua@gmail.com",
+        "password": "$2y$12$G3cggoZ0ZZr7TreDRYsqmesEC6VEsBsVEoKI5.BKIF5VycXUFJdy.",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-20 11:35:22"
+    },
+    {
+        "id": "696f6987be75a",
+        "username": "prueba",
+        "email": "prueba@gmail.com",
+        "password": "$2y$12$bq2pFuHHe\/4ANi1ufygqFOhOoizUCmOKGhov1fkFVuNZFDfgzth0m",
+        "isProfessor": "True",
+        "theme": "dark",
+        "created_at": "2026-01-20 11:39:52"
+    },
+    {
+        "id": "696f6a3c2256f",
+        "username": "_noarv_",
+        "email": "noarodriguezvarela36@gmail.com",
+        "password": "$2y$12$vD3aiGibj7UGiShwUQoKTuZwNvPtCEpk1n2T53D\/q0V\/3.LPHhaFu",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-20 11:42:52"
+    },
+    {
+        "id": "696f6ac000e15",
+        "username": "CesarRumano",
+        "email": "cesarrumanobasquet@gmail.com",
+        "password": "$2y$12$qWqVKHoyZnEzDCu\/MrBCAO3uSvUd16rh3LowY5WC0nTlyAq\/RZP6a",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-20 11:45:04"
+    },
+    {
+        "id": "696f75d5d0d62",
+        "username": "PaquitoChocolatero",
+        "email": "yagocastroaulanosa@gmail.com",
+        "password": "$2y$12$iB7TNjz9mMSpJgEnomHl\/u3ygw2G.7\/qFEInZqmZkZi36yfb.FPKa",
+        "isProfessor": "True",
+        "theme": "dark",
+        "created_at": "2026-01-20 12:32:22"
+    },
+    {
+        "id": "696f77995920f",
+        "username": "CEOMaduritosPeroRicos",
+        "email": "gorditom119@gmail.com",
+        "password": "$2y$12$qDEOAqNMJXRuYx1NuFBqUO.H4fqjgh381Z6JJBOIRUTgoxnWHNlK2",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-20 12:39:53"
+    },
+    {
+        "id": "69708af269d91",
+        "username": "Enrique",
+        "email": "joseangellopez573@gmail.com",
+        "password": "$2y$12$\/ZOl4yVYfucQ6\/8LC8mvkOdCzN67Nm2fmBBCo5C1drcdpDc6FDxkC",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-21 08:14:42"
     }
 ]
