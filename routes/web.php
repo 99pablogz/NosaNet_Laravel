@@ -18,24 +18,8 @@ Route::middleware(['theme'])->group(function () {
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/messages/new', function () {
-        // Cargar mensajes aprobados
-        $messages = \App\Models\Message::getApproved();
-        
-        // Forzar que sea una colección si no lo es
-        if (!($messages instanceof Collection)) {
-            if (is_array($messages)) {
-                $messages = collect($messages);
-            } else {
-                $messages = collect([]);
-            }
-        }
-        
-        // Ordenar por timestamp descendente
-        $messages = $messages->sortByDesc('timestamp');
-        
-        return view('home', compact('messages'));
-    })->name('home');
+    Route::get('/moderation.index', [ModerationController::class, 'index'])->name('moderation.index');
+    Route::post('/moderation.index', [ModerationController::class, 'index']);
     
     // Tema
     Route::post('/theme/toggle', [ThemeController::class, 'toggle'])->name('theme.toggle');
