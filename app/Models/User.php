@@ -7,9 +7,9 @@ class User extends JsonModel
 {
     protected static $filePath = 'users.json';
     
-    /**
-     * Encontrar usuario por nombre de usuario
-     */
+    
+     //Encontrar usuario por nombre de usuario
+     
     public static function findByUsername($username)
     {
         $data = static::readData();
@@ -79,9 +79,7 @@ class User extends JsonModel
         return null;
     }
     
-    /**
-     * Crear nuevo usuario - FIRMA COMPATIBLE CON JsonModel
-     */
+    
     public static function create(array $attributes): array
     {
         $allData = static::readData();
