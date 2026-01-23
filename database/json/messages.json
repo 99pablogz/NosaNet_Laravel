@@ -1,3 +1,79 @@
 [
-
+    {
+        "id": "6970d25ca59b1",
+        "user": "profe2",
+        "title": "Asigatura",
+        "text": "Nuevo",
+        "asignatura": "Física",
+        "approved": "true",
+        "status": "active",
+        "timestamp": "13:19 21\/01\/2026",
+        "dangerous_content": "false"
+    },
+    {
+        "id": "6970d36e748d3",
+        "user": "Marcotes",
+        "title": "Hola",
+        "text": "123",
+        "asignatura": "Inglés",
+        "approved": "pending",
+        "status": "deleted",
+        "timestamp": "13:23 21\/01\/2026",
+        "dangerous_content": "false",
+        "delete_reason": "Mal",
+        "deleted_at": "13:25 21\/01\/2026",
+        "deleted_by": "profe2"
+    },
+    {
+        "id": "6970d3818cf14",
+        "user": "Marcotes",
+        "title": "Mensaje2",
+        "text": "123",
+        "asignatura": "Física",
+        "approved": "true",
+        "status": "active",
+        "timestamp": "13:24 21\/01\/2026",
+        "dangerous_content": "false",
+        "moderated_at": "13:24 21\/01\/2026",
+        "moderated_by": "profe2"
+    },
+    {
+        "id": "6970d440db9ac",
+        "user": "Marcotes",
+        "title": "Mensaje",
+        "text": "123",
+        "asignatura": "Lengua",
+        "approved": "pending",
+        "status": "active",
+        "timestamp": "13:27 21\/01\/2026",
+        "dangerous_content": "false"
+    },
+    {
+        "id": "697334daa2bf2",
+        "user": "Marcotes",
+        "title": "frever",
+        "text": "vrevv",
+        "asignatura": "Matemáticas",
+        "approved": "pending",
+        "status": "deleted",
+        "timestamp": "08:44 23\/01\/2026",
+        "dangerous_content": "false",
+        "delete_reason": "cecv",
+        "deleted_at": "08:45 23\/01\/2026",
+        "deleted_by": "profe"
+    },
+    {
+        "id": "697334dee1dcc",
+        "user": "Marcotes",
+        "title": "vrevae",
+        "text": "reverv",
+        "asignatura": "Biología",
+        "approved": "pending",
+        "status": "deleted",
+        "timestamp": "08:44 23\/01\/2026",
+        "dangerous_content": "false",
+        "delete_reason": "cece",
+        "deleted_at": "08:47 23\/01\/2026",
+        "deleted_by": "profe"
+    }
 ]

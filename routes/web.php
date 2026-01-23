@@ -4,56 +4,44 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ModerationController;
 use App\Http\Controllers\ThemeController;
-use Illuminate\Support\Collection;
 
 // Aplicar el middleware de tema a todas las rutas
 Route::middleware(['theme'])->group(function () {
     
-    // Autenticación
-    Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
-    Route::post('/register', [AuthController::class, 'register']);
-    Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('/moderation.index', [ModerationController::class, 'index'])->name('moderation.index');
-    Route::post('/moderation.index', [ModerationController::class, 'index']);
+    // Página principal y nuevo mensaje (GET)
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/messages/new', [HomeController::class, 'index'])->name('messages.new');
     
-    // Tema
-    Route::post('/theme/toggle', [ThemeController::class, 'toggle'])->name('theme.toggle');
-
-    // Mensajes
+    // Autenticación (solo para invitados)
+    Route::middleware(['guest'])->group(function () {
+        Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
+        Route::post('/register', [AuthController::class, 'register']);
+        Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+        Route::post('/login', [LoginController::class, 'login']);
+    });
+    
+    // Logout (solo para autenticados)
+    Route::post('/logout', [LoginController::class, 'logout'])
+        ->middleware(['auth.custom'])
+        ->name('logout');
+    
+    // Tema 
+    Route::post('/theme', [ThemeController::class, 'toggle'])->name('theme.toggle');
+    
+    // Mensajes (solo para autenticados)
     Route::middleware(['auth.custom'])->group(function () {
         Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
         Route::get('/messages/my-messages', [MessageController::class, 'myMessages'])->name('messages.my');
     });
 
-    // Moderación
+    // Moderación (solo para profesores autenticados)
     Route::middleware(['auth.custom', 'professor'])->group(function () {
-
-    Route::post('/moderation/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
-        Route::post('/moderation/delete', [ModerationController::class, 'delete'])->name('moderation.delete');
+        Route::get('/moderation', [ModerationController::class, 'index'])->name('moderation.index');
+        Route::post('/moderation/{id}/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
+        Route::post('/moderation/{id}/reject', [ModerationController::class, 'delete'])->name('moderation.delete');
     });
-    
-    // Página principal
-    Route::get('/', function () {
-        // Cargar mensajes aprobados
-        $messages = \App\Models\Message::getApproved();
-        
-        // Forzar que sea una colección si no lo es
-        if (!($messages instanceof Collection)) {
-            if (is_array($messages)) {
-                $messages = collect($messages);
-            } else {
-                $messages = collect([]);
-            }
-        }
-        
-        // Ordenar por timestamp descendente
-        $messages = $messages->sortByDesc('timestamp');
-        
-        return view('home', compact('messages'));
-    })->name('home');
 });

@@ -1,59 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 NosaNet
+**Plataforma de comunicación académica moderada**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 🧠 Descripción
 
-## About Laravel
+**NosaNet** es una red social interna desarrollada como proyecto académico para la asignatura **Bases de Computación 5 (BC5)**. La aplicación permite a **alumnos y profesores** compartir mensajes educativos en un entorno controlado y seguro, con un sistema de moderación que garantiza la calidad y adecuación del contenido.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El proyecto implementa una **arquitectura profesional** utilizando Laravel, aplicando **patrones de diseño modernos** y **principios de desarrollo de software** aprendidos durante el curso. La persistencia se maneja mediante archivos **JSON**, preparando el terreno para una futura migración a base de datos relacional en BC6.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Destinatarios principales:**
+- **Estudiantes** que necesitan compartir dudas y recursos
+- **Profesores** que desean publicar anuncios y moderar contenido
+- **Desarrolladores** que buscan aprender arquitectura MVC con Laravel
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Funcionalidades Principales
 
-## Learning Laravel
+### 👥 Sistema de Usuarios
+- **Registro dual**: Alumnos y profesores con roles diferenciados
+- **Autenticación segura**: Hash bcrypt + rotación de ID de sesión
+- **Perfiles personalizados**: Tema claro/oscuro persistente
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 💬 Gestión de Mensajes
+- **Publicación controlada**: 1-280 caracteres con validación en tiempo real
+- **Asignaturas organizadas**: 9 categorías académicas predefinidas
+- **Estados de mensaje**: `pendiente` → `aprobado` → `eliminado`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛡️ Sistema de Moderación
+- **Panel exclusivo**: Solo accesible para profesores
+- **Validación automática**: Detección de contenido peligroso (70+ patrones)
+- **Acciones manuales**: Aprobación/eliminación con justificación
 
-## Laravel Sponsors
+### 🎨 Experiencia de Usuario
+- **Tema dinámico**: Claro/oscuro con persistencia en cookies (30 días)
+- **Interfaz responsive**: Adaptada a móviles, tablets y desktop
+- **Feedback inmediato**: Alertas de éxito/error contextuales
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🔒 Seguridad Avanzada
+- **Protección XSS**: Auto-escape en vistas + `htmlspecialchars()`
+- **Prevención SQLi**: Validación de patrones peligrosos
+- **Control de acceso**: Middleware por rol y autenticación
 
-### Premium Partners
+## 🛠️ Tecnologías Usadas
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Backend
+- **PHP 8.2+** - Lenguaje principal del servidor
+- **Laravel 12.46.0** - Framework MVC profesional
+- **Composer** - Gestor de dependencias PHP
 
-## Contributing
+### Frontend
+- **HTML5** - Estructura semántica
+- **CSS3** - Estilos personalizados con variables CSS
+- **Blade Templates** - Sistema de plantillas de Laravel
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Arquitectura
+- **Repository Pattern** - Abstracción de persistencia JSON
+- **Active Record Pattern** - Modelos con comportamiento
+- **Middleware Pattern** - Filtros HTTP reutilizables
+- **MVC** - Separación clara de responsabilidades
 
-## Code of Conduct
+### Herramientas de Desarrollo
+- **XAMPP** - Entorno de desarrollo local
+- **VS Code** - Editor principal
+- **Git** - Control de versiones
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

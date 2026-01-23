@@ -10,9 +10,18 @@ use App\Models\User;
 
 class ThemeController extends Controller
 {
+    /**
+     * Cambiar entre tema claro y oscuro
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function toggle(Request $request)
     {
+        // Obtener tema actual de la sesión
         $currentTheme = Session::get('theme', 'light');
+        
+        // Alternar entre light/dark
         $newTheme = $currentTheme === 'light' ? 'dark' : 'light';
         
         // Guardar en sesión
@@ -24,7 +33,7 @@ class ThemeController extends Controller
             $user = User::findByUsername($username);
             
             if ($user) {
-                // Actualizar el tema del usuario
+                // Actualizar el tema del usuario en la base de datos
                 User::update($user['id'], ['theme' => $newTheme]);
             }
         }
@@ -32,6 +41,7 @@ class ThemeController extends Controller
         // Crear cookie que dura 30 días
         $cookie = Cookie::make('theme', $newTheme, 30 * 24 * 60);
         
+        // Redirigir a la página anterior con la cookie
         return redirect()->back()->withCookie($cookie);
     }
 }

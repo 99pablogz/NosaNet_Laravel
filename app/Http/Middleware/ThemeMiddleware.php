@@ -11,18 +11,25 @@ use App\Models\User;
 
 class ThemeMiddleware
 {
+    /**
+     * Manejar la solicitud para aplicar el tema
+     *
+     * @param Request $request
+     * @param Closure $next
+     * @return mixed
+     */
     public function handle(Request $request, Closure $next)
     {
-        // Primero, intentar obtener el tema de la sesión
+        // 1. Primero, intentar obtener el tema de la sesión
         if (Session::has('theme')) {
             $theme = Session::get('theme');
         } 
-        // Si no hay en sesión, buscar en cookies
+        // 2. Si no hay en sesión, buscar en cookies
         elseif ($request->hasCookie('theme')) {
             $theme = $request->cookie('theme');
             Session::put('theme', $theme);
         }
-        // Si el usuario está autenticado, cargar su tema de la base de datos
+        // 3. Si el usuario está autenticado, cargar su tema de la base de datos
         elseif (Session::has('username')) {
             $username = Session::get('username');
             $user = User::findByUsername($username);
@@ -37,7 +44,7 @@ class ThemeMiddleware
                 $theme = 'light';
             }
         }
-        // Por defecto, tema claro
+        // 4. Por defecto, tema claro
         else {
             $theme = 'light';
         }

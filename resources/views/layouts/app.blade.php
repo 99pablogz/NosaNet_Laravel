@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="{{ session('theme', 'light') }}">
+<html lang="es" data-theme="{{ session('theme', 'light') }}">
 
 <head>
     <meta charset="UTF-8">
@@ -78,6 +78,12 @@
         @if(session('error'))
             <div class="alert alert-error">
                 {{ session('error') }}
+            </div>
+        @endif
+        
+        @if(session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
             </div>
         @endif
         

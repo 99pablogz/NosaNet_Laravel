@@ -1,3 +1,4 @@
+
 {{-- resources/views/moderation.blade.php --}}
 @extends('layouts.app')
 
@@ -45,19 +46,17 @@
                     <span class="message-status status-pending">Pendiente de moderación</span>
                     
                     <div class="moderation-actions">
-                        <form method="post" action="{{ route('moderation.approve') }}" style="display: inline;">
+                        <form method="post" action="{{ route('moderation.approve', $message['id']) }}" style="display: inline;">
                             @csrf
-                            <input type="hidden" name="message_id" value="{{ $message['id'] ?? '' }}">
                             <button type="submit" class="btn-approve" 
                                     onclick="return confirm('¿Aprobar este mensaje?')">
                                 Aprobar Mensaje
                             </button>
                         </form>
                         
-                        <form method="post" action="{{ route('moderation.delete') }}" 
+                        <form method="post" action="{{ route('moderation.delete', $message['id']) }}" 
                               style="display: inline; margin-left: 10px;">
                             @csrf
-                            <input type="hidden" name="message_id" value="{{ $message['id'] ?? '' }}">
                             <input type="text" name="delete_reason" placeholder="Razón de eliminación..." 
                                    class="delete-reason" required>
                             <button type="submit" class="btn-delete" 

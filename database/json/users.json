@@ -104,5 +104,14 @@
         "isProfessor": "True",
         "theme": "light",
         "created_at": "2026-01-21 08:14:42"
+    },
+    {
+        "id": "6970d22a22cd1",
+        "username": "profe2",
+        "email": "aaaaaaa@g.com",
+        "password": "$2y$12$KXpE3s3jgRlgAYs2FBLuTeU5OQ4Zy.UPCofvA3nneFH2hucMHIb7K",
+        "isProfessor": "True",
+        "theme": "light",
+        "created_at": "2026-01-21 13:18:34"
     }
 ]
