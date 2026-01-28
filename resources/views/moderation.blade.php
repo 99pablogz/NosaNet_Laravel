@@ -1,4 +1,3 @@
-
 {{-- resources/views/moderation.blade.php --}}
 @extends('layouts.app')
 
@@ -48,6 +47,9 @@
                     <div class="moderation-actions">
                         <form method="post" action="{{ route('moderation.approve', $message['id']) }}" style="display: inline;">
                             @csrf
+                            <input type="text" name="approve_reason" placeholder="Razón de aprobación..." 
+                                class="delete-reason" required  
+                                minlength="3" maxlength="500">
                             <button type="submit" class="btn-approve" 
                                     onclick="return confirm('¿Aprobar este mensaje?')">
                                 Aprobar Mensaje
@@ -55,10 +57,11 @@
                         </form>
                         
                         <form method="post" action="{{ route('moderation.delete', $message['id']) }}" 
-                              style="display: inline; margin-left: 10px;">
+                            style="display: inline; margin-left: 10px;">
                             @csrf
                             <input type="text" name="delete_reason" placeholder="Razón de eliminación..." 
-                                   class="delete-reason" required>
+                                class="delete-reason" required
+                                minlength="3" maxlength="500">
                             <button type="submit" class="btn-delete" 
                                     onclick="return confirm('¿Eliminar este mensaje?')">
                                 Eliminar Mensaje
@@ -70,4 +73,40 @@
         @endif
     </div>
 </div>
+
+@push('scripts')
+<script>
+    // Validación adicional para el formulario de eliminación
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('form[action*="/moderation/"]');
+        
+        deleteForms.forEach(form => {
+            const deleteReason = form.querySelector('.delete-reason');
+            const deleteButton = form.querySelector('.btn-delete');
+            
+            if (deleteReason && deleteButton) {
+                form.addEventListener('submit', function(e) {
+                    const reason = deleteReason.value.trim();
+                    
+                    if (reason.length < 3) {
+                        e.preventDefault();
+                        alert('La razón de eliminación debe tener al menos 3 caracteres.');
+                        deleteReason.focus();
+                        return false;
+                    }
+                    
+                    if (reason.length > 500) {
+                        e.preventDefault();
+                        alert('La razón de eliminación no puede tener más de 500 caracteres.');
+                        deleteReason.focus();
+                        return false;
+                    }
+                    
+                    return true;
+                });
+            }
+        });
+    });
+</script>
+@endpush
 @endsection

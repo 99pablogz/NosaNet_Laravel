@@ -40,8 +40,8 @@ Route::middleware(['theme'])->group(function () {
 
     // Moderación (solo para profesores autenticados)
     Route::middleware(['auth.custom', 'professor'])->group(function () {
-        Route::get('/moderation', [ModerationController::class, 'index'])->name('moderation.index');
-        Route::post('/moderation/{id}/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
-        Route::post('/moderation/{id}/reject', [ModerationController::class, 'delete'])->name('moderation.delete');
+         Route::get('/moderation', [ModerationController::class, 'index'])->name('moderation.index');
+    Route::post('/moderation/{id}/approve', [ModerationController::class, 'approve'])->name('moderation.approve');
+    Route::post('/moderation/{id}/delete', [ModerationController::class, 'delete'])->name('moderation.delete');
     });
 });
